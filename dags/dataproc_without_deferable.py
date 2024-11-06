@@ -24,10 +24,12 @@ with DAG('dataproc_example',
             'master_config': {
                 'num_instances': 1,
                 'machine_type_uri': 'n1-standard-4',
+                'network_uri': 'projects/ford-743794c14d5ab9bafaac1a08/global/networks/sandbox-vpc'
             },
             'worker_config': {
                 'num_instances': 2,
                 'machine_type_uri': 'n1-standard-4',
+                'network_uri': 'projects/ford-743794c14d5ab9bafaac1a08/global/networks/sandbox-vpc'
             }
         }
     )
