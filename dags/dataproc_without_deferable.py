@@ -21,15 +21,16 @@ with DAG('dataproc_example',
         cluster_name='example-cluster',
         region='us-central1',
         cluster_config={
+            'gce_cluster_config': {
+                'network_uri': 'projects/ford-743794c14d5ab9bafaac1a08/global/networks/sandbox-vpc'
+            },
             'master_config': {
                 'num_instances': 1,
                 'machine_type_uri': 'n1-standard-4',
-                'network_uri': 'projects/ford-743794c14d5ab9bafaac1a08/global/networks/sandbox-vpc'
             },
             'worker_config': {
                 'num_instances': 2,
                 'machine_type_uri': 'n1-standard-4',
-                'network_uri': 'projects/ford-743794c14d5ab9bafaac1a08/global/networks/sandbox-vpc'
             }
         }
     )
