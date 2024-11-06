@@ -17,7 +17,7 @@ with DAG('dataproc_example',
 
     create_cluster = DataprocCreateClusterOperator(
         task_id='create_cluster',
-        project_id='your-project-id',
+        project_id='ford-743794c14d5ab9bafaac1a08',
         cluster_name='example-cluster',
         region='us-central1',
         cluster_config={
@@ -34,7 +34,7 @@ with DAG('dataproc_example',
 
     submit_job = DataprocSubmitJobOperator(
         task_id='submit_job',
-        project_id='your-project-id',
+        project_id='ford-743794c14d5ab9bafaac1a08',
         region='us-central1',
         job={
             'placement': {
@@ -48,7 +48,7 @@ with DAG('dataproc_example',
 
     delete_cluster = DataprocDeleteClusterOperator(
         task_id='delete_cluster',
-        project_id='your-project-id',
+        project_id='ford-743794c14d5ab9bafaac1a08',
         cluster_name='example-cluster',
         region='us-central1',
         trigger_rule='all_done'
