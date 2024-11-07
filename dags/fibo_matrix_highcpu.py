@@ -52,3 +52,22 @@ task2 = PythonOperator(
 )
 
 task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
+task1 >> task2
