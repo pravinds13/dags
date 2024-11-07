@@ -27,7 +27,7 @@ with DAG('test_loop',
 
     for task in range(5):
         tn = BigQueryInsertJobOperator(
-              task_id='update_table_{task}',
+              task_id=f'update_table_{task}',
               configuration={
                   "query": {
                       "query": """
