@@ -25,9 +25,9 @@ with DAG('test_loop',
         location='US'
     )
 
-    for task in range(5):
-        tn = BigQueryInsertJobOperator(
-              task_id=f'update_table_{task}',
+    for i in range(5):
+        task = BigQueryInsertJobOperator(
+              task_id=f'update_table_{i}',
               configuration={
                   "query": {
                       "query": """
@@ -39,3 +39,11 @@ with DAG('test_loop',
               },
               location='US'
           )
+        
+        # Set the starting task as the upstream dependency for the first task
+        if i == 0:
+            create_table >> task
+        else:
+            # Set the previous task as the upstream dependency for the current task
+            previous_update_task = dag.get_task(f'update_table_{i-1}')
+            previous_update_task >> task
