@@ -11,7 +11,7 @@ def fibonacci(n):
 
 def calculate_fibonacci():
     # Calculate Fibonacci sequence for a large number
-    result = fibonacci(35000000)
+    result = fibonacci(350)
     print(f"Fibonacci result: {result}")
 
 def matrix_multiplication():
