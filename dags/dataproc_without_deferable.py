@@ -22,7 +22,7 @@ with DAG('dataproc_example',
         region='us-central1',
         cluster_config={
             'gce_cluster_config': {
-                'network_uri': 'projects/ford-743794c14d5ab9bafaac1a08/global/networks/sandbox-vpc'
+                'subnetwork_uri': 'projects/ford-743794c14d5ab9bafaac1a08/regions/us-central1/subnetworks/sandbox-us-central1-subnet'
             },
             'master_config': {
                 'num_instances': 1,
