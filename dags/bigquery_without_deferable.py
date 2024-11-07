@@ -43,7 +43,7 @@ with DAG('bigquery_example',
         # Set the starting task as the upstream dependency for the first task
         if i == 0:
             create_table >> task
-        else:
+        #else:
             # Set the previous task as the upstream dependency for the current task
-            previous_update_task = dag.get_task(f'update_table_{i-1}')
-            previous_update_task >> task
+        #    previous_update_task = dag.get_task(f'update_table_{i-1}')
+        #    previous_update_task >> task
