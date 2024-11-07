@@ -16,7 +16,7 @@ with DAG('bigquery_deferrable_example',
         configuration={
             "query": {
                 "query": """
-                    CREATE TABLE `ford-743794c14d5ab9bafaac1a08.dag_test_dataset.public_data_test` AS
+                    CREATE OR REPLACE TABLE `ford-743794c14d5ab9bafaac1a08.dag_test_dataset.public_data_test` AS
                     SELECT * FROM `bigquery-public-data.github_repos.contents`
                 """,
                 "useLegacySql": False,
