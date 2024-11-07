@@ -11,16 +11,16 @@ def fibonacci(n):
 
 def calculate_fibonacci():
     # Calculate Fibonacci sequence for a large number
-    result = fibonacci(35)
+    result = fibonacci(35000000)
     print(f"Fibonacci result: {result}")
 
 def matrix_multiplication():
     # Perform large matrix multiplication
-    size = 1000
+    size = 1000000000
     matrix_a = np.random.rand(size, size)
     matrix_b = np.random.rand(size, size)
     result = np.dot(matrix_a, matrix_b)
-    print("Matrix multiplication result calculated")
+    print("Matrix multiplication result calculated: {result}")
 
 default_args = {
     'owner': 'airflow',
