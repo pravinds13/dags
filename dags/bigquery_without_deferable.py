@@ -16,7 +16,7 @@ with DAG('bigquery_example',
         configuration={
             "query": {
                 "query": """
-                    CREATE OR REPLACE TABLE `ford-743794c14d5ab9bafaac1a08.dag_test_dataset.public_data_test` AS
+                    CREATE OR REPLACE TABLE `ford-743794c14d5ab9bafaac1a08.dag_test_dataset.contents` AS
                     SELECT * FROM `bigquery-public-data.github_repos.contents`
                 """,
                 "useLegacySql": False,
@@ -24,3 +24,26 @@ with DAG('bigquery_example',
         },
         location='US'
     )
+
+    for i in range(10):
+        task = BigQueryInsertJobOperator(
+              task_id=f'update_table_{i}',
+              configuration={
+                  "query": {
+                      "query": """
+                          INSERT INTO `ford-743794c14d5ab9bafaac1a08.dag_test_dataset.contents`
+                          SELECT * FROM `bigquery-public-data.github_repos.contents`
+                      """,
+                      "useLegacySql": False,
+                  }
+              },
+              location='US'
+          )
+        
+        # Set the starting task as the upstream dependency for the first task
+        if i == 0:
+            create_table >> task
+        else:
+            # Set the previous task as the upstream dependency for the current task
+            previous_update_task = dag.get_task(f'update_table_{i-1}')
+            previous_update_task >> task
