@@ -11,19 +11,19 @@ with DAG('bigquery_example',
          schedule_interval='@once',
          catchup=False) as dag:
 
-    create_table = BigQueryInsertJobOperator(
-        task_id='create_table',
-        configuration={
-            "query": {
-                "query": """
-                    CREATE OR REPLACE TABLE `ford-743794c14d5ab9bafaac1a08.dag_test_dataset.contents` AS
-                    SELECT * FROM `bigquery-public-data.github_repos.contents`
-                """,
-                "useLegacySql": False,
-            }
-        },
-        location='US'
-    )
+    #create_table = BigQueryInsertJobOperator(
+    #    task_id='create_table',
+    #    configuration={
+    #        "query": {
+    #            "query": """
+    #                CREATE OR REPLACE TABLE `ford-743794c14d5ab9bafaac1a08.dag_test_dataset.contents` AS
+    #                SELECT * FROM `bigquery-public-data.github_repos.contents`
+    #            """,
+    #            "useLegacySql": False,
+    #        }
+    #    },
+    #    location='US'
+    #)
 
     for i in range(10):
         task = BigQueryInsertJobOperator(
@@ -41,9 +41,9 @@ with DAG('bigquery_example',
           )
         
         # Set the starting task as the upstream dependency for the first task
-        if i == 0:
+        #if i == 0:
             #create_table >> task
-            create_table
+        #    create_table
         #else:
             # Set the previous task as the upstream dependency for the current task
         #    previous_update_task = dag.get_task(f'update_table_{i-1}')
